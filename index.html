@@ -100,14 +100,8 @@
   }
   .coffee:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2)}
 
-  /* ── التذييل ──────────────────────────── */
-  footer{
-    border-top:1px solid var(--border);padding:30px 0 44px;
-    text-align:center;color:var(--muted);font-size:.88rem;
-  }
-  footer a{color:var(--purple);font-weight:600}
-  @media (prefers-color-scheme: dark){ footer a{color:var(--purple-light)} }
-  .mail{display:inline-block;margin-top:6px}
+  /* مساحة إضافية أسفل آخر قسم بعد إزالة التذييل */
+  .support{padding-bottom:66px}
 </style>
 </head>
 <body>
@@ -160,25 +154,14 @@
   <div class="wrap">
     <h2>عن المطوّر</h2>
     <div class="about">
-      <div class="avatar">م</div>
+      <div class="avatar">M</div>
       <div class="about-body">
-        <h3>مهدي عبابنة</h3>
-        <div class="role">مطوّر تطبيقات الجوّال · Flutter · الأردن</div>
-        <p>
-          مطوّر تطبيقات جوّال، أعمل على بناء تطبيقات عربية بسيطة وسهلة الاستخدام.
-          «دليل حياة المسلم» مشروع أطوّره وأحدّثه باستمرار اعتماداً على ملاحظات
-          المستخدمين، بهدف تقديم تجربة إسلامية يومية مريحة ومجّانية للجميع.
-        </p>
+        <h3 dir="ltr">Mahdi Ababneh</h3>
+        <div class="role" dir="ltr">Mobile App Developer · Flutter · Jordan</div>
         <div class="links">
-          <a class="chip" href="https://jo.linkedin.com/in/mahdi-ababneh-2619b824a" target="_blank" rel="noopener">
-            <span>in</span> LinkedIn
-          </a>
-          <a class="chip" href="https://github.com/MahdiAbabneh" target="_blank" rel="noopener">
-            <span>⌥</span> GitHub
-          </a>
-          <a class="chip" href="mailto:mahdiababneh37@gmail.com">
-            <span>✉︎</span> البريد الإلكتروني
-          </a>
+          <a class="chip" href="https://jo.linkedin.com/in/mahdi-ababneh-2619b824a" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://github.com/MahdiAbabneh" target="_blank" rel="noopener">GitHub</a>
+          <a class="chip" href="mailto:mahdiababneh37@gmail.com">Email</a>
         </div>
       </div>
     </div>
@@ -188,22 +171,12 @@
 <section class="support">
   <div class="wrap">
     <h2>ادعم التطبيق</h2>
-    <p>
-      التطبيق مجّاني بالكامل. إذا أعجبك وأحببت دعم استمراره وتطويره،
-      يمكنك دعمي بكوب قهوة — وشكراً لك.
-    </p>
+    <p dir="ltr">The app is free. If you like it, you can support it.</p>
     <a class="coffee" href="https://buymeacoffee.com/mahdiababneh" target="_blank" rel="noopener">
-      ☕ ادعمني بكوب قهوة
+      ☕ Buy me a coffee
     </a>
   </div>
 </section>
-
-<footer>
-  <div class="wrap">
-    <div>دليل حياة المسلم — تطوير مهدي عبابنة</div>
-    <a class="mail" href="mailto:mahdiababneh37@gmail.com">mahdiababneh37@gmail.com</a>
-  </div>
-</footer>
 
 </body>
 </html>
