@@ -1,11 +1,131 @@
 <!doctype html>
+<html lang="ar" dir="rtl">
+<head>
 <meta charset="utf-8">
-<title>Mahdi Ababneh — Apps</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<h1>دليل حياة المسلم — Muslim Life Guide</h1>
-<p>تطبيق إسلامي: مواقيت الصلاة، القرآن الكريم، الأذكار، القبلة والراديو.</p>
-<p>
-  <a href="https://apps.apple.com/jo/app/id6472816228">App Store</a> ·
-  <a href="https://play.google.com/store/apps/details?id=mahdi.app.muslimlifeguide">Google Play</a>
-</p>
-<p>للتواصل: <a href="mailto:mahdiababneh37@gmail.com">mahdiababneh37@gmail.com</a></p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل حياة المسلم — Muslim Life Guide</title>
+<meta name="description" content="تطبيق إسلامي شامل: مواقيت الصلاة، القرآن الكريم، الأذكار، اتجاه القبلة، والراديو.">
+<link rel="icon" href="icon.png">
+<style>
+  :root{
+    --purple:#505285;
+    --purple-light:#AAB2D2;
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --text:#1c1c28;
+    --muted:#6b6b7b;
+    --border:rgba(80,82,133,.14);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#14141c; --card:#1e1e2a; --text:#f2f2f7;
+      --muted:#a0a0b0; --border:rgba(170,178,210,.18);
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Tahoma,Arial,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+  /* ── الترويسة ─────────────────────────── */
+  header{
+    background:linear-gradient(160deg,var(--purple) 0%,#6b6ea8 55%,var(--purple-light) 100%);
+    color:#fff;padding:56px 0 64px;text-align:center;
+  }
+  .icon{
+    width:104px;height:104px;border-radius:24px;display:block;margin:0 auto 20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.28);background:#fff;
+  }
+  header h1{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:800;margin-bottom:10px}
+  header p{font-size:clamp(.95rem,2.6vw,1.05rem);opacity:.93;max-width:520px;margin:0 auto}
+
+  /* ── أزرار المتاجر ────────────────────── */
+  .stores{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#fff;color:var(--purple);text-decoration:none;
+    padding:12px 22px;border-radius:14px;font-weight:700;font-size:.95rem;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.24)}
+
+  /* ── المميزات ─────────────────────────── */
+  section{padding:52px 0}
+  h2{font-size:1.25rem;font-weight:800;margin-bottom:22px;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:18px;
+    padding:20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .card .em{font-size:1.6rem;line-height:1}
+  .card h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+  .card p{font-size:.9rem;color:var(--muted)}
+
+  /* ── التذييل ──────────────────────────── */
+  footer{
+    border-top:1px solid var(--border);padding:30px 0 44px;
+    text-align:center;color:var(--muted);font-size:.88rem;
+  }
+  footer a{color:var(--purple);font-weight:600}
+  @media (prefers-color-scheme: dark){ footer a{color:var(--purple-light)} }
+  .mail{display:inline-block;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img class="icon" src="icon.png" alt="أيقونة التطبيق">
+    <h1>دليل حياة المسلم</h1>
+    <p>رفيقك اليومي: مواقيت الصلاة، القرآن الكريم، الأذكار، اتجاه القبلة، والراديو — في تطبيق واحد.</p>
+    <div class="stores">
+      <a class="btn" href="https://apps.apple.com/jo/app/id6472816228">تحميل من App&nbsp;Store</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=mahdi.app.muslimlifeguide">تحميل من Google&nbsp;Play</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>مميزات التطبيق</h2>
+    <div class="grid">
+      <div class="card"><div class="em">🕌</div><div>
+        <h3>مواقيت الصلاة</h3>
+        <p>مواقيت دقيقة حسب موقعك، مع تنبيهات الأذان والوقت المتبقّي للصلاة القادمة.</p>
+      </div></div>
+      <div class="card"><div class="em">📖</div><div>
+        <h3>القرآن الكريم</h3>
+        <p>المصحف كاملاً مع التفسير وحفظ العلامة تلقائياً لمتابعة القراءة.</p>
+      </div></div>
+      <div class="card"><div class="em">📿</div><div>
+        <h3>الأذكار والمسبحة</h3>
+        <p>أذكار الصباح والمساء وأذكار متنوّعة، مع مسبحة إلكترونية.</p>
+      </div></div>
+      <div class="card"><div class="em">🧭</div><div>
+        <h3>اتجاه القبلة</h3>
+        <p>بوصلة دقيقة لتحديد اتجاه القبلة أينما كنت.</p>
+      </div></div>
+      <div class="card"><div class="em">📻</div><div>
+        <h3>إذاعات وتلفزيون</h3>
+        <p>أكثر من ١٣٠ إذاعة قرآنية مع إمكانية الاستماع في الخلفية.</p>
+      </div></div>
+      <div class="card"><div class="em">📱</div><div>
+        <h3>ويدجت المواقيت</h3>
+        <p>الصلاة القادمة والوقت المتبقّي على الشاشة الرئيسية وشاشة القفل.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>دليل حياة المسلم — تطوير مهدي عبابنة</div>
+    <a class="mail" href="mailto:mahdiababneh37@gmail.com">mahdiababneh37@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
