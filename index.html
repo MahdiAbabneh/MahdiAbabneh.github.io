@@ -224,6 +224,31 @@ footer .flinks{display:flex;gap:8px 20px;justify-content:center;flex-wrap:wrap;m
 footer a{color:var(--muted);text-decoration:none;font-size:.87rem;font-weight:600;transition:color .18s ease}
 footer a:hover{color:var(--purple)}
 footer .copy{color:var(--muted);font-size:.82rem;opacity:.75}
+
+/* ── معرضُ اللقطات ──────────────────────── */
+.shots{background:var(--card);border-block:1px solid var(--border)}
+.rail{
+  display:flex;gap:20px;overflow-x:auto;padding:6px 22px 26px;
+  margin:0 -22px;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail figure{
+  flex:0 0 auto;width:236px;scroll-snap-align:center;
+  border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 14px 34px var(--shadow);
+  transition:transform .22s ease,box-shadow .22s ease;
+  background:var(--bg);
+}
+.rail figure:hover{transform:translateY(-6px);box-shadow:0 22px 48px var(--shadow)}
+.rail img{display:block;width:100%;height:auto}
+.hint{
+  text-align:center;color:var(--muted);font-size:.83rem;margin-top:4px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.hint svg{width:15px;height:15px;opacity:.55}
+@media(max-width:520px){.rail figure{width:200px}}
 </style>
 </head>
 <body>
@@ -233,6 +258,7 @@ footer .copy{color:var(--muted);font-size:.82rem;opacity:.75}
     <a class="brand" href="#top"><img src="icon.png" alt=""> دليل حياة المسلم</a>
     <div class="spacer"></div>
     <a class="link" href="#features">المميزات</a>
+    <a class="link" href="#shots">لقطات</a>
     <a class="link" href="#premium">النسخة المميّزة</a>
     <a class="link" href="#dev">المطوّر</a>
   </div>
@@ -249,7 +275,7 @@ footer .copy{color:var(--muted);font-size:.82rem;opacity:.75}
         <span class="t"><small>حمّل من</small><b>App&nbsp;Store</b></span>
       </a>
       <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.muslimlifeguide">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M4.3 3.2 14 12l-9.7 8.8c-.3-.2-.5-.6-.5-1.1V4.3c0-.5.2-.9.5-1.1z"/><path fill="#FBBC04" d="M17.8 9.4 14 12l-3.1-2.8 3.1-2.9 3.8 2.2c.8.5.8 1.4 0 .9z"/><path fill="#EA4335" d="M4.3 3.2c.4-.2.9-.2 1.4.1l8.4 4.8L11 11 4.3 3.2z"/><path fill="#4285F4" d="M4.3 20.8 11 13l3.1 2.9-8.4 4.8c-.5.3-1 .3-1.4.1z"/></svg>
+        <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#4285F4" d="M47.6 24.9C42.3 30.5 39.2 39.2 39.2 50.5v411c0 11.3 3.1 20 8.4 25.6l1.4 1.3L279.6 258v-5.4L49 24.9z"/><path fill="#34A853" d="M358.2 177L86.4 22.3C70.4 13.2 56.2 14.3 47.6 24.9l232 232z"/><path fill="#FBBC04" d="M356.5 334.6l-76.9-76.6v-5.4l77-76.6 1.7 1L448 227c26.1 14.8 26.1 39.1 0 54l-89.8 50.6z"/><path fill="#EA4335" d="M358.2 333.6l-78.6-78.3-232 232c8.6 9.1 22.8 10.2 38.8 1.1z"/></svg>
         <span class="t"><small>حمّل من</small><b>Google&nbsp;Play</b></span>
       </a>
     </div>
@@ -280,6 +306,18 @@ footer .copy{color:var(--muted);font-size:.82rem;opacity:.75}
       <div class="card"><div class="em">📱</div>
         <h3>ويدجت المواقيت</h3>
         <p>الصلاة القادمة والوقت المتبقّي على الشاشة الرئيسية وشاشة القفل.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="shots" id="shots">
+  <div class="wrap">
+    <div class="rail">
+      <figure><img src="shots/01_prayer.jpg" width="480" height="1043" loading="lazy" decoding="async" alt="مواقيت الصلاة بدقّة مع عدٍّ تنازليٍّ للصلاة القادمة"></figure>
+      <figure><img src="shots/03_quran_ramadan.jpg" width="480" height="1043" loading="lazy" decoding="async" alt="المصحف كاملاً بالرسم العثمانيّ مع حفظ الموضع"></figure>
+      <figure><img src="shots/04_adkar_grid.jpg" width="480" height="1043" loading="lazy" decoding="async" alt="أكثر من ١٤٠ ذكراً ودعاءً لكلّ وقت"></figure>
+      <figure><img src="shots/05_tasbih_subhan.jpg" width="480" height="1043" loading="lazy" decoding="async" alt="مِسبحة إلكترونيّة بعشرة تصاميم للخرز"></figure>
+      <figure><img src="shots/02_radio.jpg" width="480" height="1043" loading="lazy" decoding="async" alt="إذاعات قرآنيّة تعمل في الخلفيّة"></figure>
     </div>
   </div>
 </section>
