@@ -219,6 +219,22 @@ h2{font-size:clamp(1.35rem,3.8vw,1.75rem);font-weight:800;text-align:center;lett
 
 /* ── سياسة الخصوصية ─────────────────────── */
 .privacy{border-top:1px solid var(--border)}
+.lang-switch{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.lang-switch button{
+  font-family:inherit;font-weight:700;font-size:.9rem;cursor:pointer;
+  color:var(--muted);background:var(--card);
+  border:1px solid var(--border);border-radius:999px;padding:8px 22px;
+  transition:all .18s ease;
+}
+.lang-switch button:hover{color:var(--text)}
+.lang-switch button.on{
+  color:#fff;background:var(--purple);border-color:var(--purple-2);
+}
+.privacy article[hidden]{display:none}
+.privacy article.ar{direction:rtl;text-align:right}
+.privacy article.ar h3{letter-spacing:0}
+.privacy article.ar li{padding-left:0;padding-right:18px}
+.privacy article.ar li::before{left:auto;right:4px}
 .privacy article{
   direction:ltr;text-align:left;
   background:var(--card);border:1px solid var(--border);
@@ -383,7 +399,54 @@ footer .copy{color:var(--muted);font-size:.82rem;opacity:.75}
   <div class="wrap">
     <span class="eyebrow">خصوصيّتك</span>
     <h2>سياسة الخصوصية</h2>
-    <article>
+    <div class="lang-switch">
+      <button type="button" id="plang-ar" class="on" onclick="privacyLang('ar')">العربية</button>
+      <button type="button" id="plang-en" onclick="privacyLang('en')">English</button>
+    </div>
+    <article class="ar" id="privacy-ar">
+      <p class="pdate"><b>سياسة الخصوصية</b> — تاريخ السريان: ١٢ أغسطس ٢٠٢٦</p>
+      <p>توضّح هذه السياسة ما يجمعه تطبيق «دليل حياة المسلم» ولماذا. وباستعمالك التطبيقَ فأنت توافق عليها.</p>
+
+      <h3>ما لا نجمعه</h3>
+      <p>لا حسابات في التطبيق ولا تسجيل دخول. لا نطلب ولا نخزّن اسمك ولا بريدك الإلكتروني ولا رقم هاتفك ولا أيّ محتوى تكتبه داخل التطبيق (كذِكرٍ خاصّ تضيفه).</p>
+
+      <h3>الموقع الجغرافي</h3>
+      <p>لحساب مواقيت الصلاة واتجاه القبلة يطلب التطبيق موقعَ جهازك، وتُرسل الإحداثيات عبر اتصال مشفَّر (HTTPS) إلى خدمة مواقيت الصلاة Aladhan التي تعيد مواقيت منطقتك. لا نخزّن موقعك على أيّ خادم لنا، ولا نشاركه مع أيّ جهة أخرى.</p>
+      <p>ويمكنك رفض هذا الإذن؛ يبقى التطبيق يعمل، لكن المواقيت والقبلة لن تتوفّر.</p>
+
+      <h3>التحليلات وتقارير الأعطال</h3>
+      <p>يستخدم التطبيق Google Firebase Analytics وFirebase Crashlytics لمعرفة الشاشات المستعملة واستقبال تقارير الأعطال. وما يُرسل مجهول الهويّة: أسماء الشاشات، وعدّادات بسيطة، وتفاصيل تقنية للعطل (طراز الجهاز، إصدار النظام، أثر الخطأ). لا بيانات شخصية فيها، ولا يمكننا التعرّف عليك منها.</p>
+
+      <h3>الإعلانات</h3>
+      <p>تعرض النسخة المجّانية إعلاناتٍ عبر Google AdMob، وقد تستخدم AdMob مُعرِّفَ الإعلانات في جهازك لعرض الإعلانات وقياسها، كما هو موضّح في سياسة خصوصية Google:‏ <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+      <p>المشتركون لا يرون إعلاناتٍ إطلاقاً، ولا تصدر لهم أيّ طلبات إعلانية.</p>
+      <p>ويمكنك إعادة ضبط مُعرِّف الإعلانات أو تقييده في أيّ وقت:</p>
+      <ul>
+        <li>آيفون: الإعدادات ← الخصوصية والأمان ← التتبّع</li>
+        <li>أندرويد: الإعدادات ← Google ← الإعلانات</li>
+      </ul>
+
+      <h3>خدمات المحتوى</h3>
+      <p>يُنزّل التطبيق نصَّ القرآن والتفسير والتلاوات وبثَّ الإذاعات من خدمات محتوى إسلامية عامّة، ولا تحمل هذه الطلبات أيّ بيانات شخصية — فقط أيّ صفحةٍ أو سورةٍ أو محطّةٍ فتحتَ.</p>
+
+      <h3>الاشتراكات</h3>
+      <p>النسخة المميّزة اشتراك يتجدّد تلقائياً يُباع عبر App Store وGoogle Play. الدفعُ والتجديدُ والاستردادُ والإلغاءُ كلُّها بيد Apple أو Google، ولا يصلنا إلا إن كان الاشتراك فعّالاً الآن أم لا. وتُحفظ ميزتُك على جهازك أنت.</p>
+      <p>ويمكنك الإلغاء في أيّ وقت من إعدادات الاشتراكات في Apple ID أو Google Play.</p>
+
+      <h3>الأطفال</h3>
+      <p>التطبيق غير موجَّه للأطفال دون ١٣ عاماً، ولا نجمع بياناتٍ منهم عن علم.</p>
+
+      <h3>الأمان والحذف</h3>
+      <p>تُنقل كلُّ البيانات عبر اتصالات مشفَّرة (HTTPS). ولحذف بيانات التحليلات المجهولة المرتبطة بتثبيتك، احذف التطبيق أو امسح بياناته. ولأيّ شيء آخر راسلنا على العنوان أدناه وسنجيبك.</p>
+
+      <h3>التغييرات</h3>
+      <p>قد نحدّث هذه السياسة، والتاريخ في الأعلى يبيّن آخر تغيير.</p>
+
+      <h3>التواصل</h3>
+      <p><a href="mailto:mahdiababneh37@gmail.com" dir="ltr">mahdiababneh37@gmail.com</a></p>
+      <p>شكراً لاستخدامك «دليل حياة المسلم».</p>
+    </article>
+    <article id="privacy-en" hidden>
       <p class="pdate"><b>Privacy Policy</b> — Effective Date: 12 August 2026</p>
       <p>This policy explains what the Muslim Life Guide app collects and why. By using the app you agree to it.</p>
 
@@ -468,5 +531,13 @@ footer .copy{color:var(--muted);font-size:.82rem;opacity:.75}
   </div>
 </footer>
 
+<script>
+function privacyLang(l){
+  document.getElementById('privacy-ar').hidden = l !== 'ar';
+  document.getElementById('privacy-en').hidden = l !== 'en';
+  document.getElementById('plang-ar').classList.toggle('on', l === 'ar');
+  document.getElementById('plang-en').classList.toggle('on', l === 'en');
+}
+</script>
 </body>
 </html>
