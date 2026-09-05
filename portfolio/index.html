@@ -232,6 +232,20 @@ p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 @media(max-width:760px){.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.tl{grid-template-columns:1fr}}
 
+/* ── group headings ────────────────────── */
+.group + .group{
+  margin-top:72px;padding-top:56px;
+  border-top:1px solid var(--border);
+}
+.sec-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px}
+.sec-head h3{font-size:1.14rem;font-weight:800;letter-spacing:-.016em}
+.sec-head .count{
+  font-size:.68rem;font-weight:700;color:var(--gold);letter-spacing:.08em;
+  border:1px solid rgba(232,200,122,.32);border-radius:999px;padding:3px 11px;
+  white-space:nowrap;
+}
+.sec-note{color:var(--muted);font-size:.88rem;margin:0 0 24px;max-width:62ch}
+
 /* ── products ──────────────────────────── */
 .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(288px,1fr))}
 .app{
