@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahdi Ababneh — Senior Flutter Developer</title>
+<meta name="description" content="Senior Flutter Developer in Amman, Jordan. Four years building and shipping production mobile apps on the App Store and Google Play — Flutter, Dart, Spring Boot, Laravel.">
+<meta name="theme-color" content="#0f1018">
+<link rel="icon" href="../icon.png">
+<link rel="canonical" href="https://mahdiababneh.github.io/portfolio/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Mahdi Ababneh — Senior Flutter Developer">
+<meta property="og:description" content="Four years building and shipping production mobile apps on the App Store and Google Play.">
+<meta property="og:url" content="https://mahdiababneh.github.io/portfolio/">
+<meta property="og:image" content="https://mahdiababneh.github.io/icon.png">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mahdi Ababneh",
+  "jobTitle": "Senior Flutter Developer",
+  "email": "mahdiababneh37@gmail.com",
+  "telephone": "+962780345907",
+  "url": "https://mahdiababneh.github.io/portfolio/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Amman", "addressCountry": "JO" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Jadara University" },
+  "knowsLanguage": ["ar", "en"],
+  "sameAs": [
+    "https://github.com/MahdiAbabneh",
+    "https://jo.linkedin.com/in/mahdi-ababneh-2619b824a"
+  ]
+}
+</script>
+
+<style>
+:root{
+  --purple:#505285; --purple-2:#6b6ea8; --purple-light:#AAB2D2;
+  --gold:#E8C87A; --gold-2:#D4A94E;
+  --bg:#0f1018; --card:#191b26; --card-2:#1f2130;
+  --text:#f3f4f9; --muted:#9b9db2;
+  --border:rgba(170,178,210,.16); --shadow:rgba(0,0,0,.5);
+  --r-sm:12px; --r:18px; --r-lg:26px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+.ar{font-family:"Almarai",sans-serif}
+::selection{background:var(--purple);color:#fff}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ── nav ───────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+.nav .brand{font-weight:800;font-size:.95rem;text-decoration:none;letter-spacing:-.01em}
+.nav .spacer{flex:1}
+.nav a.link{
+  text-decoration:none;color:var(--muted);font-size:.87rem;font-weight:500;
+  transition:color .18s ease;white-space:nowrap;
+}
+.nav a.link:hover{color:var(--purple-light)}
+@media(max-width:760px){.nav a.link{display:none}}
+
+/* ── hero ──────────────────────────────── */
+.hero{
+  position:relative;overflow:hidden;
+  padding:82px 0 68px;
+  background:linear-gradient(168deg,#5c5f99 0%,#464873 48%,#16171f 100%);
+}
+.hero::before{
+  content:"";position:absolute;pointer-events:none;border-radius:50%;
+  width:520px;height:520px;top:-260px;right:-140px;
+  background:radial-gradient(circle,rgba(232,200,122,.16),transparent 68%);
+}
+.hero .wrap{position:relative}
+.eyebrow{
+  display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+}
+.hero h1{font-size:clamp(2.1rem,5.6vw,3.3rem);line-height:1.12;font-weight:800;letter-spacing:-.025em}
+.hero .role{
+  margin-top:12px;font-size:clamp(1rem,2.4vw,1.22rem);font-weight:600;color:var(--purple-light);
+}
+.hero p.lede{margin-top:18px;max-width:60ch;color:rgba(243,244,249,.82);font-size:1.02rem}
+
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.stat{
+  background:rgba(15,16,24,.42);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-sm);padding:12px 18px;backdrop-filter:blur(6px);
+}
+.stat b{display:block;font-size:1.32rem;font-weight:800;line-height:1.2;letter-spacing:-.02em}
+.stat span{font-size:.76rem;color:rgba(243,244,249,.66);font-weight:500}
+
+.cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:999px;text-decoration:none;
+  font-size:.89rem;font-weight:600;border:1px solid transparent;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--gold);color:#1a1608}
+.btn.primary:hover{background:var(--gold-2)}
+.btn.ghost{border-color:rgba(255,255,255,.28);color:#fff}
+.btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* ── sections ──────────────────────────── */
+section.block{padding:64px 0}
+section.alt{background:#12131c;border-block:1px solid var(--border)}
+h2.title{
+  font-size:clamp(1.42rem,3.2vw,1.9rem);font-weight:800;letter-spacing:-.022em;
+  margin-bottom:8px;
+}
+p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
+
+/* ── timeline ──────────────────────────── */
+.tl{position:relative;padding-left:26px}
+.tl::before{
+  content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,var(--purple-2),transparent);
+}
+.job{position:relative;padding-bottom:34px}
+.job:last-child{padding-bottom:0}
+.job::before{
+  content:"";position:absolute;left:-26px;top:9px;width:12px;height:12px;
+  border-radius:50%;background:var(--card);border:2px solid var(--purple-2);
+}
+.job.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(232,200,122,.16)}
+.job h3{font-size:1.06rem;font-weight:700;letter-spacing:-.012em}
+.job .co{color:var(--purple-light);font-weight:600;font-size:.95rem;margin-top:1px}
+.job .meta{color:var(--muted);font-size:.82rem;margin-top:5px}
+.job .meta .now-badge{
+  color:var(--gold);font-weight:700;border:1px solid rgba(232,200,122,.4);
+  border-radius:999px;padding:1px 9px;font-size:.7rem;margin-left:8px;
+  text-transform:uppercase;letter-spacing:.07em;
+}
+.job ul{margin:11px 0 0;list-style:none}
+.job li{
+  position:relative;padding-left:17px;color:var(--muted);font-size:.9rem;margin-bottom:4px;
+}
+.job li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;border-radius:50%;background:var(--purple-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.tag{
+  font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;
+  background:rgba(107,110,168,.18);border:1px solid var(--border);color:var(--purple-light);
+}
+
+/* ── products ──────────────────────────── */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(288px,1fr))}
+.app{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:24px;display:flex;flex-direction:column;
+  transition:transform .18s ease,border-color .18s ease;
+}
+.app:hover{transform:translateY(-3px);border-color:rgba(170,178,210,.34)}
+.app .top{display:flex;align-items:flex-start;gap:12px}
+.app h3{font-size:1.04rem;font-weight:700;letter-spacing:-.012em;flex:1}
+.app .pill{
+  font-size:.68rem;font-weight:800;letter-spacing:.05em;padding:3px 9px;border-radius:999px;
+  background:rgba(232,200,122,.14);color:var(--gold);border:1px solid rgba(232,200,122,.3);
+  white-space:nowrap;
+}
+.app p{color:var(--muted);font-size:.89rem;margin:11px 0 0;flex:1}
+.app .stack{font-size:.76rem;color:var(--purple-light);margin-top:13px;font-weight:500}
+.app .stores{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.store{
+  display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+  font-size:.78rem;font-weight:600;padding:7px 13px;border-radius:9px;
+  border:1px solid var(--border);color:var(--text);
+  transition:background .16s ease,border-color .16s ease;
+}
+.store:hover{background:rgba(107,110,168,.2);border-color:var(--purple-2)}
+.store svg{width:13px;height:13px;fill:currentColor;opacity:.85}
+
+/* ── skills ────────────────────────────── */
+.skills{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.sk{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px}
+.sk h3{
+  font-size:.75rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.sk .chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-size:.79rem;font-weight:500;padding:4px 11px;border-radius:8px;
+  background:var(--card-2);border:1px solid var(--border);color:rgba(243,244,249,.9);
+}
+
+/* ── facts ─────────────────────────────── */
+.facts{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.fact{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px}
+.fact h3{font-size:.75rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+.fact .row{display:flex;justify-content:space-between;gap:14px;padding:7px 0;font-size:.9rem}
+.fact .row + .row{border-top:1px solid var(--border)}
+.fact .row span:first-child{color:var(--muted)}
+.fact .row span:last-child{font-weight:600;text-align:right}
+
+/* ── contact ───────────────────────────── */
+.contact-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:8px}
+.cc{
+  display:flex;align-items:center;gap:13px;text-decoration:none;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:15px 18px;transition:transform .16s ease,border-color .16s ease;
+}
+.cc:hover{transform:translateY(-2px);border-color:var(--purple-2)}
+.cc .ico{
+  width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;
+  background:rgba(107,110,168,.2);
+}
+.cc .ico svg{width:17px;height:17px;fill:var(--purple-light)}
+.cc b{display:block;font-size:.87rem;font-weight:600}
+.cc small{color:var(--muted);font-size:.74rem}
+
+footer{
+  border-top:1px solid var(--border);padding:30px 0;
+  color:var(--muted);font-size:.83rem;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+footer .spacer{flex:1}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--purple-light)}
+
+@media print{
+  .nav,.cta,footer .spacer{display:none}
+  body{background:#fff;color:#000}
+  .hero{background:#fff;color:#000;padding:20px 0}
+  .app,.sk,.fact,.stat{border-color:#ccc;background:#fff}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Mahdi Ababneh</a>
+    <div class="spacer"></div>
+    <a class="link" href="#experience">Experience</a>
+    <a class="link" href="#products">Products</a>
+    <a class="link" href="#skills">Skills</a>
+    <a class="link" href="#background">Background</a>
+    <a class="link" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">Amman, Jordan</span>
+    <h1>Mahdi Ababneh</h1>
+    <div class="role">Senior Flutter Developer · iOS &amp; Android</div>
+    <p class="lede">
+      I build and ship production mobile apps end to end — product decisions,
+      Flutter code, native platform work, backend APIs, store release, and the
+      long maintenance that comes after. Four years across five companies in
+      Jordan, Saudi Arabia, the UAE and the United States.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><b>4+</b><span>Years shipping</span></div>
+      <div class="stat"><b>4</b><span>Apps live on the stores</span></div>
+      <div class="stat"><b>20K+</b><span>Downloads</span></div>
+      <div class="stat"><b>5</b><span>Companies, 4 countries</span></div>
+    </div>
+
+    <div class="cta">
+      <a class="btn primary" href="mailto:mahdiababneh37@gmail.com">Get in touch</a>
+      <a class="btn ghost" href="https://jo.linkedin.com/in/mahdi-ababneh-2619b824a" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/MahdiAbabneh" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══ EXPERIENCE ══ -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <h2 class="title">Experience</h2>
+    <p class="sub">Full-time roles, most recent first.</p>
+
+    <div class="tl">
+
+      <article class="job now">
+        <h3>Senior Flutter Developer</h3>
+        <div class="co">Ard Group</div>
+        <div class="meta">Jul 2025 — Present · Amman, Jordan · On-site<span class="now-badge">Current</span></div>
+        <ul>
+          <li>Lead Flutter development on the company's mobile products.</li>
+          <li>Own the release pipeline through to the App Store and Google Play.</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">iOS</span><span class="tag">Android</span></div>
+      </article>
+
+      <article class="job">
+        <h3>Senior Flutter Developer</h3>
+        <div class="co">Disty · دِستي</div>
+        <div class="meta">Feb 2025 — Jul 2025 · Saudi Arabia · Remote</div>
+        <ul>
+          <li>Built Flutter applications for online and offline media distribution.</li>
+          <li>Delivered Sales Plus, the company's field-sales mobile product.</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Offline-first</span></div>
+      </article>
+
+      <article class="job">
+        <h3>Mobile Developer</h3>
+        <div class="co">Xeleration</div>
+        <div class="meta">Mar 2024 — Feb 2025 · Amman, Jordan · On-site</div>
+        <ul>
+          <li>Developed real-estate mobile applications with interactive mapping.</li>
+          <li>Integrated Mapbox for property search, clustering and geolocation.</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Mapbox</span><span class="tag">Geolocation</span></div>
+      </article>
+
+      <article class="job">
+        <h3>Full Stack Mobile Developer</h3>
+        <div class="co">iSolutions · ismena</div>
+        <div class="meta">Apr 2023 — Mar 2024 · United Arab Emirates · Remote</div>
+        <ul>
+          <li>Built the Flutter front end and the PHP&nbsp;/&nbsp;Laravel back end for the same products.</li>
+          <li>Designed and consumed REST APIs across both sides of the stack.</li>
+          <li>Ran daily stand-ups with a distributed team.</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">REST</span></div>
+      </article>
+
+      <article class="job">
+        <h3>Full Stack Mobile Developer</h3>
+        <div class="co">Cyper Solutions · Fazeal</div>
+        <div class="meta">Jan 2022 — Apr 2023 · United States · Remote</div>
+        <ul>
+          <li>Flutter front end with a Java&nbsp;/&nbsp;Spring Boot and MySQL back end.</li>
+          <li>Supervised staff training and onboarded new developers onto the codebase.</li>
+          <li>Worked in Agile with Jira and Confluence across time zones.</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Spring Boot</span><span class="tag">Java</span><span class="tag">Microservices</span><span class="tag">Agile</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUCTS ══ -->
+<section class="block alt" id="products">
+  <div class="wrap">
+    <h2 class="title">Products on the stores</h2>
+    <p class="sub">Apps I designed, built and published — live and maintained today.</p>
+
+    <div class="grid">
+
+      <article class="app">
+        <div class="top">
+          <h3>Muslim Life Guide<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">دليل حياة المسلم</span></h3>
+          <span class="pill">10K+</span>
+        </div>
+        <p>
+          An Arabic-first Islamic companion app: the complete 605-page Mushaf,
+          prayer times with adhan notifications, qibla compass, adhkar with
+          reminders, khatma tracker, Qur'an radio with 100+ reciters, a hadith
+          library, and a home-screen prayer widget on both platforms. Works
+          offline. Fully accessible with VoiceOver and TalkBack.
+        </p>
+        <div class="stack">Flutter · Firebase · StoreKit &amp; Play Billing · WidgetKit · Local notifications</div>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/app/id6472816228" target="_blank" rel="noopener">App Store</a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.muslimlifeguide" target="_blank" rel="noopener">Google Play</a>
+          <a class="store" href="../">Website</a>
+        </div>
+      </article>
+
+      <article class="app">
+        <div class="top">
+          <h3>Durar — Summaries<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">درر — ملخصات</span></h3>
+          <span class="pill">10K+</span>
+        </div>
+        <p>
+          Concise summaries of the world's most influential books in Arabic and
+          English, so readers can learn faster and think deeper. Built for
+          Durar&nbsp;Digital&nbsp;LLC.
+        </p>
+        <div class="stack">Flutter · REST API · Bilingual RTL / LTR</div>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/app/id6749918679" target="_blank" rel="noopener">App Store</a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.durar.books" target="_blank" rel="noopener">Google Play</a>
+        </div>
+      </article>
+
+      <article class="app">
+        <div class="top">
+          <h3>Studio HD</h3>
+        </div>
+        <p>
+          A large library of HD wallpapers and video backgrounds with keyword and
+          emoji search, in-app editing and customization, favourites, offline
+          downloads and one-tap sharing.
+        </p>
+        <div class="stack">Flutter · REST API · SQFlite</div>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/app/id6473664481" target="_blank" rel="noopener">App Store</a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.wallpapersfreehd" target="_blank" rel="noopener">Google Play</a>
+        </div>
+      </article>
+
+      <article class="app">
+        <div class="top">
+          <h3>Note With Us</h3>
+        </div>
+        <p>
+          A social notes app: Google sign-in, notes with ringing reminders,
+          sharing and likes, memories and image stories, in-app chat and simple
+          games, profile and theme customization — in Arabic and English.
+        </p>
+        <div class="stack">Flutter · Firebase Auth · Firestore · Cloud Messaging</div>
+        <div class="stores">
+          <a class="store" href="https://play.google.com/store/apps/details?id=at.mahdi.notewithus" target="_blank" rel="noopener">Google Play</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section class="block" id="skills">
+  <div class="wrap">
+    <h2 class="title">Technical skills</h2>
+    <p class="sub">What I use day to day, grouped by where it sits in the stack.</p>
+
+    <div class="skills">
+      <div class="sk">
+        <h3>Mobile</h3>
+        <div class="chips">
+          <span class="chip">Flutter</span><span class="chip">Dart</span>
+          <span class="chip">Swift</span><span class="chip">Platform channels</span>
+          <span class="chip">WidgetKit</span><span class="chip">Android App Widgets</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <h3>State &amp; architecture</h3>
+        <div class="chips">
+          <span class="chip">BLoC / Cubit</span><span class="chip">GetX</span>
+          <span class="chip">MVVM</span><span class="chip">MVC</span>
+          <span class="chip">Clean architecture</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <h3>Backend</h3>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Spring Boot</span>
+          <span class="chip">Spring MVC</span><span class="chip">Spring Core</span>
+          <span class="chip">Microservices</span><span class="chip">Hibernate</span>
+          <span class="chip">PHP</span><span class="chip">Laravel</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <h3>Data &amp; APIs</h3>
+        <div class="chips">
+          <span class="chip">REST</span><span class="chip">GraphQL</span>
+          <span class="chip">SQL / PL-SQL</span><span class="chip">MySQL</span>
+          <span class="chip">SQFlite</span><span class="chip">Firebase</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <h3>Ship &amp; operate</h3>
+        <div class="chips">
+          <span class="chip">App Store Connect</span><span class="chip">Google Play Console</span>
+          <span class="chip">In-app purchases</span><span class="chip">Push &amp; local notifications</span>
+          <span class="chip">Crashlytics</span><span class="chip">Analytics</span>
+          <span class="chip">Accessibility auditing</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <h3>Tooling &amp; process</h3>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">GitHub</span>
+          <span class="chip">GitLab</span><span class="chip">Bitbucket</span>
+          <span class="chip">Jira</span><span class="chip">Confluence</span>
+          <span class="chip">Agile / Scrum</span><span class="chip">JUnit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BACKGROUND ══ -->
+<section class="block alt" id="background">
+  <div class="wrap">
+    <h2 class="title">Background</h2>
+    <p class="sub">Education, languages, and the way I like to work.</p>
+
+    <div class="facts">
+      <div class="fact">
+        <h3>Education</h3>
+        <div class="row"><span>Degree</span><span>B.Sc. Software Engineering</span></div>
+        <div class="row"><span>University</span><span>Jadara University</span></div>
+        <div class="row"><span>Years</span><span>2017 — 2021</span></div>
+        <div class="row"><span>Grade</span><span>Very Good</span></div>
+      </div>
+
+      <div class="fact">
+        <h3>Languages</h3>
+        <div class="row"><span>Arabic</span><span>Native</span></div>
+        <div class="row"><span>English</span><span>Professional working</span></div>
+      </div>
+
+      <div class="fact">
+        <h3>Strengths</h3>
+        <div class="row"><span>Ownership</span><span>Ship end to end</span></div>
+        <div class="row"><span>Problem solving</span><span>Root cause, not patches</span></div>
+        <div class="row"><span>Teamwork</span><span>Remote across time zones</span></div>
+        <div class="row"><span>Learning</span><span>Fast, and continuous</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <h2 class="title">Get in touch</h2>
+    <p class="sub">Open to senior mobile roles, remote or in Amman.</p>
+
+    <div class="contact-grid">
+      <a class="cc" href="mailto:mahdiababneh37@gmail.com">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+        <span><b>Email</b><small>mahdiababneh37@gmail.com</small></span>
+      </a>
+
+      <a class="cc" href="tel:+962780345907">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg></span>
+        <span><b>Phone</b><small>+962 78 034 5907</small></span>
+      </a>
+
+      <a class="cc" href="https://jo.linkedin.com/in/mahdi-ababneh-2619b824a" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05a4.2 4.2 0 0 1 3.75-2c4 0 4.75 2.6 4.75 6V21h-4v-5.6c0-1.35-.03-3.1-1.9-3.1s-2.2 1.47-2.2 3v5.7H9z"/></svg></span>
+        <span><b>LinkedIn</b><small>mahdi-ababneh</small></span>
+      </a>
+
+      <a class="cc" href="https://github.com/MahdiAbabneh" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.08.68-.22.68-.48v-1.7C6.73 19.9 6.14 18 6.14 18c-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.57.69.48A10 10 0 0 0 12 2z"/></svg></span>
+        <span><b>GitHub</b><small>MahdiAbabneh</small></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Mahdi Ababneh</span>
+    <span class="spacer"></span>
+    <a href="../">Muslim Life Guide</a>
+    <a href="https://github.com/MahdiAbabneh" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:mahdiababneh37@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
