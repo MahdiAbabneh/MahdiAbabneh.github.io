@@ -132,37 +132,71 @@ h2.title{
 }
 p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 
-/* ── timeline ──────────────────────────── */
-.tl{position:relative;padding-left:26px}
-.tl::before{
-  content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;
-  background:linear-gradient(180deg,var(--purple-2),transparent);
+/* ── timeline: horizontal ──────────────── */
+.tl{
+  display:flex;gap:16px;
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;
+  padding:38px 2px 14px;margin:0 -2px;
+  scrollbar-width:thin;scrollbar-color:var(--purple-2) transparent;
 }
-.job{position:relative;padding-bottom:34px}
-.job:last-child{padding-bottom:0}
+.tl::-webkit-scrollbar{height:8px}
+.tl::-webkit-scrollbar-track{background:rgba(170,178,210,.08);border-radius:99px}
+.tl::-webkit-scrollbar-thumb{background:var(--purple-2);border-radius:99px}
+.tl::-webkit-scrollbar-thumb:hover{background:var(--purple-light)}
+.tl:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:12px}
+
+.job{
+  position:relative;flex:0 0 292px;scroll-snap-align:start;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:20px;transition:border-color .18s ease,transform .18s ease;
+}
+.job:hover{border-color:rgba(170,178,210,.34);transform:translateY(-3px)}
+
+/* الخطُّ الواصلُ يُبنى من البطاقات نفسِها، فيمرُّ معها عند التمرير. */
+.job::after{
+  content:"";position:absolute;top:-19px;left:0;height:2px;
+  width:calc(100% + 16px);background:var(--purple-2);opacity:.32;
+}
+.job:last-child::after{width:100%;
+  background:linear-gradient(90deg,var(--purple-2),transparent)}
 .job::before{
-  content:"";position:absolute;left:-26px;top:9px;width:12px;height:12px;
+  content:"";position:absolute;top:-24px;left:0;width:12px;height:12px;
   border-radius:50%;background:var(--card);border:2px solid var(--purple-2);
 }
-.job.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(232,200,122,.16)}
-.job h3{font-size:1.06rem;font-weight:700;letter-spacing:-.012em}
-.job .co{color:var(--purple-light);font-weight:600;font-size:.95rem;margin-top:1px}
-.job .meta{color:var(--muted);font-size:.82rem;margin-top:5px}
+.job.now::before{
+  background:var(--gold);border-color:var(--gold);
+  box-shadow:0 0 0 5px rgba(232,200,122,.16);
+}
+
+.job h3{font-size:1rem;font-weight:700;letter-spacing:-.012em;line-height:1.35}
+.job .co{color:var(--purple-light);font-weight:600;font-size:.9rem;margin-top:3px}
+.job .meta{color:var(--muted);font-size:.78rem;margin-top:6px;line-height:1.55}
 .job .meta .now-badge{
-  color:var(--gold);font-weight:700;border:1px solid rgba(232,200,122,.4);
-  border-radius:999px;padding:1px 9px;font-size:.7rem;margin-left:8px;
-  text-transform:uppercase;letter-spacing:.07em;
+  display:inline-block;color:var(--gold);font-weight:700;
+  border:1px solid rgba(232,200,122,.4);border-radius:999px;padding:0 8px;
+  font-size:.66rem;margin-top:5px;text-transform:uppercase;letter-spacing:.07em;
 }
-.job ul{margin:11px 0 0;list-style:none}
+.job ul{margin:12px 0 0;list-style:none}
 .job li{
-  position:relative;padding-left:17px;color:var(--muted);font-size:.9rem;margin-bottom:4px;
+  position:relative;padding-left:15px;color:var(--muted);
+  font-size:.85rem;line-height:1.6;margin-bottom:5px;
 }
-.job li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;border-radius:50%;background:var(--purple-2)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.job li::before{content:"";position:absolute;left:1px;top:10px;width:4px;height:4px;border-radius:50%;background:var(--purple-2)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
 .tag{
-  font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;
+  font-size:.69rem;font-weight:600;padding:2px 9px;border-radius:999px;
   background:rgba(107,110,168,.18);border:1px solid var(--border);color:var(--purple-light);
 }
+
+.scroll-hint{
+  display:flex;align-items:center;gap:7px;
+  color:var(--muted);font-size:.78rem;margin-top:10px;
+}
+.scroll-hint svg{width:14px;height:14px;fill:var(--purple-light)}
+/* لا يُخفى على الشاشات العريضة: خمسُ بطاقاتٍ تحتاج ١٥٢٤ بكسلاً والحاويةُ
+   ٩٧٦ — فالشريطُ يُمرَّر على كلّ عرض. */
+@media(max-width:560px){.job{flex:0 0 84%}}
 
 /* ── products ──────────────────────────── */
 .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(288px,1fr))}
@@ -262,7 +296,10 @@ footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--purple-light)}
 
 @media print{
-  .nav,.cta,footer .spacer{display:none}
+  .nav,.cta,footer .spacer,.scroll-hint{display:none}
+  .tl{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding-top:0}
+  .job{flex:none}
+  .job::before,.job::after{display:none}
   body{background:#fff;color:#000}
   .hero{background:#fff;color:#000;padding:20px 0}
   .app,.sk,.fact,.stat{border-color:#ccc;background:#fff}
@@ -316,12 +353,12 @@ footer a:hover{color:var(--purple-light)}
     <h2 class="title">Experience</h2>
     <p class="sub">Full-time roles, most recent first.</p>
 
-    <div class="tl">
+    <div class="tl" tabindex="0" role="group" aria-label="Experience timeline, scroll sideways">
 
       <article class="job now">
         <h3>Senior Flutter Developer</h3>
         <div class="co">Ard Group</div>
-        <div class="meta">Jul 2025 — Present · Amman, Jordan · On-site<span class="now-badge">Current</span></div>
+        <div class="meta">Jul 2025 — Present<br>Amman, Jordan · On-site<br><span class="now-badge">Current</span></div>
         <ul>
           <li>Lead Flutter development on the company's mobile products.</li>
           <li>Own the release pipeline through to the App Store and Google Play.</li>
@@ -332,7 +369,7 @@ footer a:hover{color:var(--purple-light)}
       <article class="job">
         <h3>Senior Flutter Developer</h3>
         <div class="co">Disty · دِستي</div>
-        <div class="meta">Feb 2025 — Jul 2025 · Saudi Arabia · Remote</div>
+        <div class="meta">Feb 2025 — Jul 2025<br>Saudi Arabia · Remote</div>
         <ul>
           <li>Built Flutter applications for online and offline media distribution.</li>
           <li>Delivered Sales Plus, the company's field-sales mobile product.</li>
@@ -343,7 +380,7 @@ footer a:hover{color:var(--purple-light)}
       <article class="job">
         <h3>Mobile Developer</h3>
         <div class="co">Xeleration</div>
-        <div class="meta">Mar 2024 — Feb 2025 · Amman, Jordan · On-site</div>
+        <div class="meta">Mar 2024 — Feb 2025<br>Amman, Jordan · On-site</div>
         <ul>
           <li>Developed real-estate mobile applications with interactive mapping.</li>
           <li>Integrated Mapbox for property search, clustering and geolocation.</li>
@@ -354,7 +391,7 @@ footer a:hover{color:var(--purple-light)}
       <article class="job">
         <h3>Full Stack Mobile Developer</h3>
         <div class="co">iSolutions · ismena</div>
-        <div class="meta">Apr 2023 — Mar 2024 · United Arab Emirates · Remote</div>
+        <div class="meta">Apr 2023 — Mar 2024<br>United Arab Emirates · Remote</div>
         <ul>
           <li>Built the Flutter front end and the PHP&nbsp;/&nbsp;Laravel back end for the same products.</li>
           <li>Designed and consumed REST APIs across both sides of the stack.</li>
@@ -366,7 +403,7 @@ footer a:hover{color:var(--purple-light)}
       <article class="job">
         <h3>Full Stack Mobile Developer</h3>
         <div class="co">Cyper Solutions · Fazeal</div>
-        <div class="meta">Jan 2022 — Apr 2023 · United States · Remote</div>
+        <div class="meta">Jan 2022 — Apr 2023<br>United States · Remote</div>
         <ul>
           <li>Flutter front end with a Java&nbsp;/&nbsp;Spring Boot and MySQL back end.</li>
           <li>Supervised staff training and onboarded new developers onto the codebase.</li>
@@ -376,6 +413,10 @@ footer a:hover{color:var(--purple-light)}
       </article>
 
     </div>
+    <p class="scroll-hint">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10m0 0-3.5-3.5M17 12l-3.5 3.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Scroll sideways for earlier roles
+    </p>
   </div>
 </section>
 
