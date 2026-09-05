@@ -96,7 +96,31 @@ a{color:inherit}
   width:520px;height:520px;top:-260px;right:-140px;
   background:radial-gradient(circle,rgba(232,200,122,.16),transparent 68%);
 }
-.hero .wrap{position:relative}
+.hero .wrap{position:relative;max-width:1280px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:52px;align-items:start}
+@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+
+.hero-side{display:flex;flex-direction:column;gap:12px}
+.hero-side .fact{
+  background:rgba(15,16,24,.34);border:1px solid rgba(255,255,255,.13);
+  border-radius:var(--r);padding:16px 18px;backdrop-filter:blur(8px);
+}
+.hero-side .fact h3{
+  font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:9px;
+}
+.hero-side .row{
+  display:flex;justify-content:space-between;gap:12px;padding:5px 0;
+  font-size:.82rem;line-height:1.45;
+}
+.hero-side .row + .row{border-top:1px solid rgba(255,255,255,.09)}
+.hero-side .row span:first-child{color:rgba(243,244,249,.62);flex:none}
+.hero-side .row span:last-child{font-weight:600;text-align:right;color:#fff}
+/* على الشاشات المتوسّطة تصير الثلاثُ صفّاً أفقيّاً بدل عمود. */
+@media(max-width:1000px) and (min-width:660px){
+  .hero-side{flex-direction:row}
+  .hero-side .fact{flex:1}
+}
 .eyebrow{
   display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold);margin-bottom:14px;
@@ -208,6 +232,32 @@ p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 @media(max-width:760px){.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.tl{grid-template-columns:1fr}}
 
+/* ── products ──────────────────────────── */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(288px,1fr))}
+.app{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:24px;display:flex;flex-direction:column;
+  transition:transform .18s ease,border-color .18s ease;
+}
+.app:hover{transform:translateY(-3px);border-color:rgba(170,178,210,.34)}
+.app .top{display:flex;align-items:flex-start;gap:12px}
+.app h3{font-size:1.04rem;font-weight:700;letter-spacing:-.012em;flex:1;line-height:1.35}
+.app .pill{
+  font-size:.68rem;font-weight:800;letter-spacing:.05em;padding:3px 9px;border-radius:999px;
+  background:rgba(232,200,122,.14);color:var(--gold);border:1px solid rgba(232,200,122,.3);
+  white-space:nowrap;
+}
+.app p{color:var(--muted);font-size:.89rem;margin:11px 0 0;flex:1}
+.app .stack{font-size:.76rem;color:var(--purple-light);margin-top:13px;font-weight:500}
+.app .stores{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.store{
+  display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+  font-size:.78rem;font-weight:600;padding:7px 13px;border-radius:9px;
+  border:1px solid var(--border);color:var(--text);
+  transition:background .16s ease,border-color .16s ease;
+}
+.store:hover{background:rgba(107,110,168,.2);border-color:var(--purple-2)}
+.store svg{width:13px;height:13px;fill:currentColor;opacity:.85}
 .app .pub{
   color:var(--purple-light);font-weight:600;font-size:.84rem;margin-top:4px;
 }
@@ -234,15 +284,6 @@ p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
   font-size:.79rem;font-weight:500;padding:4px 11px;border-radius:8px;
   background:var(--card-2);border:1px solid var(--border);color:rgba(243,244,249,.9);
 }
-
-/* ── facts ─────────────────────────────── */
-.facts{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.fact{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px}
-.fact h3{font-size:.75rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
-.fact .row{display:flex;justify-content:space-between;gap:14px;padding:7px 0;font-size:.9rem}
-.fact .row + .row{border-top:1px solid var(--border)}
-.fact .row span:first-child{color:var(--muted)}
-.fact .row span:last-child{font-weight:600;text-align:right}
 
 /* ── contact ───────────────────────────── */
 .contact-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:8px}
@@ -290,13 +331,13 @@ footer a:hover{color:var(--purple-light)}
     <a class="link" href="#experience">Experience</a>
     <a class="link" href="#products">Products</a>
     <a class="link" href="#skills">Skills</a>
-    <a class="link" href="#background">Background</a>
     <a class="link" href="#contact">Contact</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+   <div class="hero-main">
     <span class="eyebrow">Amman, Jordan</span>
     <h1>Mahdi Ababneh</h1>
     <div class="role">Senior Flutter Developer · iOS &amp; Android</div>
@@ -318,6 +359,31 @@ footer a:hover{color:var(--purple-light)}
       <a class="btn ghost" href="https://jo.linkedin.com/in/mahdi-ababneh-2619b824a" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn ghost" href="https://github.com/MahdiAbabneh" target="_blank" rel="noopener">GitHub</a>
     </div>
+   </div>
+
+   <aside class="hero-side" aria-label="Education, languages and strengths">
+        <div class="fact">
+          <h3>Education</h3>
+          <div class="row"><span>Degree</span><span>B.Sc. Software Engineering</span></div>
+          <div class="row"><span>University</span><span>Jadara University</span></div>
+          <div class="row"><span>Years</span><span>2017 — 2021</span></div>
+          <div class="row"><span>Grade</span><span>Very Good</span></div>
+        </div>
+
+        <div class="fact">
+          <h3>Languages</h3>
+          <div class="row"><span>Arabic</span><span>Native</span></div>
+          <div class="row"><span>English</span><span>Professional working</span></div>
+        </div>
+
+        <div class="fact">
+          <h3>Strengths</h3>
+          <div class="row"><span>Ownership</span><span>Ship end to end</span></div>
+          <div class="row"><span>Problem solving</span><span>Root cause, not patches</span></div>
+          <div class="row"><span>Teamwork</span><span>Remote across time zones</span></div>
+          <div class="row"><span>Learning</span><span>Fast, and continuous</span></div>
+        </div>
+   </aside>
   </div>
 </header>
 
@@ -625,38 +691,6 @@ footer a:hover{color:var(--purple-light)}
           <span class="chip">Jira</span><span class="chip">Confluence</span>
           <span class="chip">Agile / Scrum</span><span class="chip">JUnit</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ BACKGROUND ══ -->
-<section class="block alt" id="background">
-  <div class="wrap">
-    <h2 class="title">Background</h2>
-    <p class="sub">Education, languages, and the way I like to work.</p>
-
-    <div class="facts">
-      <div class="fact">
-        <h3>Education</h3>
-        <div class="row"><span>Degree</span><span>B.Sc. Software Engineering</span></div>
-        <div class="row"><span>University</span><span>Jadara University</span></div>
-        <div class="row"><span>Years</span><span>2017 — 2021</span></div>
-        <div class="row"><span>Grade</span><span>Very Good</span></div>
-      </div>
-
-      <div class="fact">
-        <h3>Languages</h3>
-        <div class="row"><span>Arabic</span><span>Native</span></div>
-        <div class="row"><span>English</span><span>Professional working</span></div>
-      </div>
-
-      <div class="fact">
-        <h3>Strengths</h3>
-        <div class="row"><span>Ownership</span><span>Ship end to end</span></div>
-        <div class="row"><span>Problem solving</span><span>Root cause, not patches</span></div>
-        <div class="row"><span>Teamwork</span><span>Remote across time zones</span></div>
-        <div class="row"><span>Learning</span><span>Fast, and continuous</span></div>
       </div>
     </div>
   </div>
