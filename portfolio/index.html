@@ -137,36 +137,32 @@ h2.title{
 }
 p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 
-/* ── timeline: horizontal ──────────────── */
+/* ── timeline: كلُّها ظاهرةٌ بلا تمرير ──── */
+
+/* قسمُ الخبرة وحدَه يخرج عن عرض الصفحة (١٠٢٠): خمسُ بطاقاتٍ فيه تصير
+   ١٩٠ بكسلاً للواحدة — أضيقُ من أن تُقرأ. */
+#experience .wrap{max-width:1500px}
+
 .tl{
-  display:flex;gap:16px;
-  overflow-x:auto;overscroll-behavior-x:contain;
-  scroll-snap-type:x proximity;
-  padding:38px 2px 14px;margin:0 -2px;
-  scrollbar-width:thin;scrollbar-color:var(--purple-2) transparent;
+  display:grid;gap:14px;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  padding-top:38px;position:relative;
 }
-.tl::-webkit-scrollbar{height:8px}
-.tl::-webkit-scrollbar-track{background:rgba(170,178,210,.08);border-radius:99px}
-.tl::-webkit-scrollbar-thumb{background:var(--purple-2);border-radius:99px}
-.tl::-webkit-scrollbar-thumb:hover{background:var(--purple-light)}
-.tl:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:12px}
+/* الخطُّ الواصل: صفٌّ واحدٌ فله خطٌّ واحد. ويُخفى حين تلتفّ البطاقات. */
+.tl::before{
+  content:"";position:absolute;top:19px;left:6px;right:6px;height:2px;
+  background:linear-gradient(90deg,var(--gold) 0 2%,var(--purple-2) 12% 88%,transparent);
+  opacity:.5;
+}
 
 .job{
-  position:relative;flex:0 0 292px;scroll-snap-align:start;
+  position:relative;
   background:var(--card);border:1px solid var(--border);border-radius:var(--r);
-  padding:20px;transition:border-color .18s ease,transform .18s ease;
+  padding:18px 16px;transition:border-color .18s ease,transform .18s ease;
 }
 .job:hover{border-color:rgba(170,178,210,.34);transform:translateY(-3px)}
-
-/* الخطُّ الواصلُ يُبنى من البطاقات نفسِها، فيمرُّ معها عند التمرير. */
-.job::after{
-  content:"";position:absolute;top:-19px;left:0;height:2px;
-  width:calc(100% + 16px);background:var(--purple-2);opacity:.32;
-}
-.job:last-child::after{width:100%;
-  background:linear-gradient(90deg,var(--purple-2),transparent)}
 .job::before{
-  content:"";position:absolute;top:-24px;left:0;width:12px;height:12px;
+  content:"";position:absolute;top:-25px;left:0;width:12px;height:12px;
   border-radius:50%;background:var(--card);border:2px solid var(--purple-2);
 }
 .job.now::before{
@@ -174,72 +170,43 @@ p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
   box-shadow:0 0 0 5px rgba(232,200,122,.16);
 }
 
-.job h3{font-size:1rem;font-weight:700;letter-spacing:-.012em;line-height:1.35}
-.job .co{color:var(--purple-light);font-weight:600;font-size:.9rem;margin-top:3px}
-.job .meta{color:var(--muted);font-size:.78rem;margin-top:6px;line-height:1.55}
+.job h3{font-size:.95rem;font-weight:700;letter-spacing:-.012em;line-height:1.35}
+.job .co{color:var(--purple-light);font-weight:600;font-size:.86rem;margin-top:3px}
+.job .meta{color:var(--muted);font-size:.75rem;margin-top:6px;line-height:1.55}
 .job .meta .now-badge{
   display:inline-block;color:var(--gold);font-weight:700;
   border:1px solid rgba(232,200,122,.4);border-radius:999px;padding:0 8px;
-  font-size:.66rem;margin-top:5px;text-transform:uppercase;letter-spacing:.07em;
+  font-size:.64rem;margin-top:5px;text-transform:uppercase;letter-spacing:.07em;
 }
-.job ul{margin:12px 0 0;list-style:none}
+.job ul{margin:11px 0 0;list-style:none}
 .job li{
-  position:relative;padding-left:15px;color:var(--muted);
-  font-size:.85rem;line-height:1.6;margin-bottom:5px;
+  position:relative;padding-left:14px;color:var(--muted);
+  font-size:.81rem;line-height:1.55;margin-bottom:5px;
 }
-.job li::before{content:"";position:absolute;left:1px;top:10px;width:4px;height:4px;border-radius:50%;background:var(--purple-2)}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.job li::before{content:"";position:absolute;left:1px;top:9px;width:4px;height:4px;border-radius:50%;background:var(--purple-2)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
 .tag{
-  font-size:.69rem;font-weight:600;padding:2px 9px;border-radius:999px;
+  font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:999px;
   background:rgba(107,110,168,.18);border:1px solid var(--border);color:var(--purple-light);
 }
+.scroll-hint{display:none}
 
-.scroll-hint{
-  display:flex;align-items:center;gap:7px;
-  color:var(--muted);font-size:.78rem;margin-top:10px;
+/* تلتفُّ ولا تُمرَّر: الشاشةُ الأضيقُ تأخذ صفوفاً، والخطُّ يذهب معها. */
+/* بين ١١٠٠ و١٤٠٠ تبقى الخمسُ في صفٍّ واحدٍ بفجوةٍ وحشوةٍ أضيق. */
+@media(max-width:1400px){
+  .tl{gap:10px}
+  .job{padding:16px 13px}
+  .job h3{font-size:.9rem}
+  .job li{font-size:.78rem}
 }
-.scroll-hint svg{width:14px;height:14px;fill:var(--purple-light)}
-/* لا يُخفى على الشاشات العريضة: خمسُ بطاقاتٍ تحتاج ١٥٢٤ بكسلاً والحاويةُ
-   ٩٧٦ — فالشريطُ يُمرَّر على كلّ عرض. */
-@media(max-width:560px){.job{flex:0 0 84%}}
-
-/* ── products ──────────────────────────── */
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(288px,1fr))}
-.app{
-  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
-  padding:24px;display:flex;flex-direction:column;
-  transition:transform .18s ease,border-color .18s ease;
+@media(max-width:1099px){
+  .tl{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-top:0}
+  .job{padding:18px 16px}
+  .tl::before{display:none}
+  .job::before{display:none}
 }
-.app:hover{transform:translateY(-3px);border-color:rgba(170,178,210,.34)}
-.app .top{display:flex;align-items:flex-start;gap:12px}
-.app h3{font-size:1.04rem;font-weight:700;letter-spacing:-.012em;flex:1}
-.app .pill{
-  font-size:.68rem;font-weight:800;letter-spacing:.05em;padding:3px 9px;border-radius:999px;
-  background:rgba(232,200,122,.14);color:var(--gold);border:1px solid rgba(232,200,122,.3);
-  white-space:nowrap;
-}
-.app p{color:var(--muted);font-size:.89rem;margin:11px 0 0;flex:1}
-.app .stack{font-size:.76rem;color:var(--purple-light);margin-top:13px;font-weight:500}
-.app .stores{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.store{
-  display:inline-flex;align-items:center;gap:6px;text-decoration:none;
-  font-size:.78rem;font-weight:600;padding:7px 13px;border-radius:9px;
-  border:1px solid var(--border);color:var(--text);
-  transition:background .16s ease,border-color .16s ease;
-}
-.store:hover{background:rgba(107,110,168,.2);border-color:var(--purple-2)}
-.store svg{width:13px;height:13px;fill:currentColor;opacity:.85}
-
-.sec-head{
-  display:flex;align-items:baseline;gap:12px;margin:0 0 6px;
-}
-.sec-head h3{font-size:1.06rem;font-weight:800;letter-spacing:-.014em}
-.sec-head .count{
-  font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.06em;
-  border:1px solid rgba(232,200,122,.32);border-radius:999px;padding:2px 10px;
-}
-.sec-note{color:var(--muted);font-size:.87rem;margin:0 0 20px}
-.group + .group{margin-top:46px}
+@media(max-width:760px){.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.tl{grid-template-columns:1fr}}
 
 .app .pub{
   color:var(--purple-light);font-weight:600;font-size:.84rem;margin-top:4px;
@@ -304,7 +271,8 @@ footer a:hover{color:var(--purple-light)}
 
 @media print{
   .nav,.cta,footer .spacer,.scroll-hint{display:none}
-  .tl{display:grid;grid-template-columns:1fr 1fr;overflow:visible;padding-top:0}
+  .tl{grid-template-columns:1fr 1fr;padding-top:0}
+  .tl::before{display:none}
   .job{flex:none}
   .job::before,.job::after{display:none}
   body{background:#fff;color:#000}
@@ -359,15 +327,15 @@ footer a:hover{color:var(--purple-light)}
     <h2 class="title">Experience</h2>
     <p class="sub">Full-time roles, most recent first.</p>
 
-    <div class="tl" tabindex="0" role="group" aria-label="Experience timeline, scroll sideways">
+    <div class="tl">
 
       <article class="job now">
         <h3>Senior Flutter Developer</h3>
         <div class="co">Ard Group</div>
         <div class="meta">Jul 2025 — Present<br>Amman, Jordan · On-site<br><span class="now-badge">Current</span></div>
         <ul>
-          <li>Flutter development on <b>Balady</b>, the Saudi ministry&rsquo;s national municipal-services app &mdash; 1M+ downloads.</li>
-          <li>Own the release pipeline through to the App Store and Google Play.</li>
+          <li>Flutter on <b>Balady</b> &mdash; the Saudi ministry&rsquo;s national municipal-services app, 1M+ downloads.</li>
+          <li>Own the release pipeline to both stores.</li>
         </ul>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">3D maps</span><span class="tag">Government scale</span></div>
       </article>
@@ -377,8 +345,8 @@ footer a:hover{color:var(--purple-light)}
         <div class="co">Disty · دِستي</div>
         <div class="meta">Feb 2025 — Jul 2025<br>Saudi Arabia · Remote</div>
         <ul>
-          <li>Built <b>SalesPlus</b>, a salesforce and order-fulfilment platform for the MENA region.</li>
-          <li>Offline-first sync for reps working without a signal.</li>
+          <li>Built <b>SalesPlus</b> &mdash; salesforce and order fulfilment across MENA.</li>
+          <li>Offline-first sync for reps with no signal.</li>
         </ul>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Offline-first</span></div>
       </article>
@@ -389,7 +357,7 @@ footer a:hover{color:var(--purple-light)}
         <div class="meta">Mar 2024 — Feb 2025<br>Amman, Jordan · On-site</div>
         <ul>
           <li>Built <b>PSI Real Estate</b> for Property Shop Investment, Abu Dhabi.</li>
-          <li>Integrated Mapbox for property search, clustering and geolocation.</li>
+          <li>Mapbox search, clustering and geolocation.</li>
         </ul>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Mapbox</span><span class="tag">Geolocation</span><span class="tag">Real estate</span></div>
       </article>
@@ -399,9 +367,9 @@ footer a:hover{color:var(--purple-light)}
         <div class="co">iSolutions · ismena</div>
         <div class="meta">Apr 2023 — Mar 2024<br>United Arab Emirates · Remote</div>
         <ul>
-          <li>Built <b>iSolution Events</b> end to end &mdash; Flutter client, PHP&nbsp;/&nbsp;Laravel back end.</li>
-          <li>Designed and consumed the REST APIs on both sides of the stack.</li>
-          <li>Ran daily stand-ups with a distributed team.</li>
+          <li>Built <b>iSolution Events</b> end to end &mdash; Flutter and Laravel.</li>
+          <li>Designed and consumed the REST APIs on both sides.</li>
+          <li>Daily stand-ups with a distributed team.</li>
         </ul>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">REST</span></div>
       </article>
@@ -411,18 +379,14 @@ footer a:hover{color:var(--purple-light)}
         <div class="co">Cyper Solutions · Fazeal</div>
         <div class="meta">Jan 2022 — Apr 2023<br>United States · Remote</div>
         <ul>
-          <li>Built <b>Fazeal Social</b> &mdash; Flutter client on a Java&nbsp;/&nbsp;Spring Boot microservice back end.</li>
-          <li>Supervised staff training and onboarded new developers onto the codebase.</li>
-          <li>Worked in Agile with Jira and Confluence across time zones.</li>
+          <li>Built <b>Fazeal Social</b> &mdash; Flutter on Java&nbsp;/&nbsp;Spring Boot microservices.</li>
+          <li>Supervised training and onboarded new developers.</li>
+          <li>Agile with Jira and Confluence across time zones.</li>
         </ul>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Spring Boot</span><span class="tag">Java</span><span class="tag">Microservices</span><span class="tag">Agile</span></div>
       </article>
 
     </div>
-    <p class="scroll-hint">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10m0 0-3.5-3.5M17 12l-3.5 3.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Scroll sideways for earlier roles
-    </p>
   </div>
 </section>
 
