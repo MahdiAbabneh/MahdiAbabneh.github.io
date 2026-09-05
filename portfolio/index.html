@@ -161,76 +161,51 @@ h2.title{
 }
 p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 
-/* ── timeline: كلُّها ظاهرةٌ بلا تمرير ──── */
+/* ── timeline: ثلاثٌ ثمّ اثنتان ─────────── */
 
-/* قسمُ الخبرة وحدَه يخرج عن عرض الصفحة (١٠٢٠): خمسُ بطاقاتٍ فيه تصير
-   ١٩٠ بكسلاً للواحدة — أضيقُ من أن تُقرأ. */
-#experience .wrap{max-width:1500px}
+/* قسمُ الخبرة أعرضُ من عمود الصفحة (١٠٢٠) ليتّسع لثلاثِ بطاقاتٍ مريحة. */
+#experience .wrap{max-width:1320px}
 
+/* خمسٌ في صفٍّ كانت تضغط كلَّ بطاقةٍ إلى ٢٦٧ بكسلاً، فتُقطَّع الجملُ إلى
+   أسطرٍ من كلمتين ويبقى تحتها فراغٌ لا يملؤه شيء. ثلاثٌ ثمّ اثنتان تعطي
+   البطاقةَ ٤٢٠ بكسلاً — سطراً يُقرأ بلا تكسير. */
 .tl{
-  display:grid;gap:14px;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  padding-top:38px;position:relative;
+  display:grid;gap:18px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
 }
-/* الخطُّ الواصل: صفٌّ واحدٌ فله خطٌّ واحد. ويُخفى حين تلتفّ البطاقات. */
-.tl::before{
-  content:"";position:absolute;top:19px;left:6px;right:6px;height:2px;
-  background:linear-gradient(90deg,var(--gold) 0 2%,var(--purple-2) 12% 88%,transparent);
-  opacity:.5;
-}
+/* لا خطَّ واصلاً ولا نقاطاً: خطٌّ أفقيٌّ فوق صفَّين يصل ما لا يتّصل،
+   ونقطةٌ بلا خطٍّ زينةٌ محيّرة. وشارةُ CURRENT تكفي لتمييز الحاليّ. */
 
 .job{
   position:relative;
   background:var(--card);border:1px solid var(--border);border-radius:var(--r);
-  padding:18px 16px;transition:border-color .18s ease,transform .18s ease;
+  padding:22px 20px;transition:border-color .18s ease,transform .18s ease;
 }
 .job:hover{border-color:rgba(170,178,210,.34);transform:translateY(-3px)}
-.job::before{
-  content:"";position:absolute;top:-25px;left:0;width:12px;height:12px;
-  border-radius:50%;background:var(--card);border:2px solid var(--purple-2);
-}
-.job.now::before{
-  background:var(--gold);border-color:var(--gold);
-  box-shadow:0 0 0 5px rgba(232,200,122,.16);
-}
 
-.job h3{font-size:.95rem;font-weight:700;letter-spacing:-.012em;line-height:1.35}
-.job .co{color:var(--purple-light);font-weight:600;font-size:.86rem;margin-top:3px}
-.job .meta{color:var(--muted);font-size:.75rem;margin-top:6px;line-height:1.55}
+.job h3{font-size:1.02rem;font-weight:700;letter-spacing:-.012em;line-height:1.35}
+.job .co{color:var(--purple-light);font-weight:600;font-size:.92rem;margin-top:3px}
+.job .meta{color:var(--muted);font-size:.79rem;margin-top:7px;line-height:1.55}
 .job .meta .now-badge{
   display:inline-block;color:var(--gold);font-weight:700;
-  border:1px solid rgba(232,200,122,.4);border-radius:999px;padding:0 8px;
-  font-size:.64rem;margin-top:5px;text-transform:uppercase;letter-spacing:.07em;
+  border:1px solid rgba(232,200,122,.4);border-radius:999px;padding:0 9px;
+  font-size:.66rem;margin-top:6px;text-transform:uppercase;letter-spacing:.07em;
 }
-.job ul{margin:11px 0 0;list-style:none}
+.job ul{margin:13px 0 0;list-style:none}
 .job li{
-  position:relative;padding-left:14px;color:var(--muted);
-  font-size:.81rem;line-height:1.55;margin-bottom:5px;
+  position:relative;padding-left:16px;color:var(--muted);
+  font-size:.87rem;line-height:1.6;margin-bottom:6px;
 }
-.job li::before{content:"";position:absolute;left:1px;top:9px;width:4px;height:4px;border-radius:50%;background:var(--purple-2)}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
+.job li::before{content:"";position:absolute;left:1px;top:10px;width:5px;height:5px;border-radius:50%;background:var(--purple-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
 .tag{
-  font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:999px;
+  font-size:.7rem;font-weight:600;padding:2px 9px;border-radius:999px;
   background:rgba(107,110,168,.18);border:1px solid var(--border);color:var(--purple-light);
 }
 .scroll-hint{display:none}
 
-/* تلتفُّ ولا تُمرَّر: الشاشةُ الأضيقُ تأخذ صفوفاً، والخطُّ يذهب معها. */
-/* بين ١١٠٠ و١٤٠٠ تبقى الخمسُ في صفٍّ واحدٍ بفجوةٍ وحشوةٍ أضيق. */
-@media(max-width:1400px){
-  .tl{gap:10px}
-  .job{padding:16px 13px}
-  .job h3{font-size:.9rem}
-  .job li{font-size:.78rem}
-}
-@media(max-width:1099px){
-  .tl{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-top:0}
-  .job{padding:18px 16px}
-  .tl::before{display:none}
-  .job::before{display:none}
-}
-@media(max-width:760px){.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.tl{grid-template-columns:1fr}}
+@media(max-width:900px){.tl{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
+@media(max-width:560px){.tl{grid-template-columns:1fr}}
 
 /* ── group headings ────────────────────── */
 .group + .group{
@@ -326,10 +301,8 @@ footer a:hover{color:var(--purple-light)}
 
 @media print{
   .nav,.cta,footer .spacer,.scroll-hint{display:none}
-  .tl{grid-template-columns:1fr 1fr;padding-top:0}
-  .tl::before{display:none}
+  .tl{grid-template-columns:1fr 1fr}
   .job{flex:none}
-  .job::before,.job::after{display:none}
   body{background:#fff;color:#000}
   .hero{background:#fff;color:#000;padding:20px 0}
   .app,.sk,.fact,.stat{border-color:#ccc;background:#fff}
@@ -409,7 +382,7 @@ footer a:hover{color:var(--purple-light)}
 
     <div class="tl">
 
-      <article class="job now">
+      <article class="job">
         <h3>Senior Flutter Developer</h3>
         <div class="co">Ard Group</div>
         <div class="meta">Jul 2025 — Present<br>Amman, Jordan · On-site<br><span class="now-badge">Current</span></div>
