@@ -191,6 +191,29 @@ p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 .store:hover{background:rgba(107,110,168,.2);border-color:var(--purple-2)}
 .store svg{width:13px;height:13px;fill:currentColor;opacity:.85}
 
+.sec-head{
+  display:flex;align-items:baseline;gap:12px;margin:0 0 6px;
+}
+.sec-head h3{font-size:1.06rem;font-weight:800;letter-spacing:-.014em}
+.sec-head .count{
+  font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.06em;
+  border:1px solid rgba(232,200,122,.32);border-radius:999px;padding:2px 10px;
+}
+.sec-note{color:var(--muted);font-size:.87rem;margin:0 0 20px}
+.group + .group{margin-top:46px}
+
+.rows{display:flex;flex-direction:column;gap:10px}
+.row-app{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:16px 20px;transition:border-color .18s ease;
+}
+.row-app:hover{border-color:rgba(170,178,210,.34)}
+.row-app .name{font-weight:700;font-size:.97rem;letter-spacing:-.01em}
+.row-app .for{color:var(--purple-light);font-size:.83rem;font-weight:600}
+.row-app .desc{color:var(--muted);font-size:.86rem;flex:1 1 260px;min-width:0}
+.row-app .stores{margin:0}
+
 /* ── skills ────────────────────────────── */
 .skills{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .sk{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px}
@@ -274,8 +297,8 @@ footer a:hover{color:var(--purple-light)}
 
     <div class="stats">
       <div class="stat"><b>4+</b><span>Years shipping</span></div>
-      <div class="stat"><b>4</b><span>Apps live on the stores</span></div>
-      <div class="stat"><b>20K+</b><span>Downloads</span></div>
+      <div class="stat"><b>8</b><span>Apps shipped</span></div>
+      <div class="stat"><b>3</b><span>Published under my own name</span></div>
       <div class="stat"><b>5</b><span>Companies, 4 countries</span></div>
     </div>
 
@@ -359,80 +382,132 @@ footer a:hover{color:var(--purple-light)}
 <!-- ══ PRODUCTS ══ -->
 <section class="block alt" id="products">
   <div class="wrap">
-    <h2 class="title">Products on the stores</h2>
-    <p class="sub">Apps I designed, built and published — live and maintained today.</p>
+    <h2 class="title">Apps I have shipped</h2>
+    <p class="sub">Eight production apps on the App Store and Google Play — three published under my own developer account, five built for the companies I worked with.</p>
 
-    <div class="grid">
+    <!-- ─────────── PERSONAL ─────────── -->
+    <div class="group">
+      <div class="sec-head">
+        <h3>My own apps</h3>
+        <span class="count">3 · SELF-PUBLISHED</span>
+      </div>
+      <p class="sec-note">Designed, built, published and maintained by me — from the first line of code to store review, support and updates.</p>
 
-      <article class="app">
-        <div class="top">
-          <h3>Muslim Life Guide<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">دليل حياة المسلم</span></h3>
-          <span class="pill">10K+</span>
-        </div>
-        <p>
-          An Arabic-first Islamic companion app: the complete 605-page Mushaf,
-          prayer times with adhan notifications, qibla compass, adhkar with
-          reminders, khatma tracker, Qur'an radio with 100+ reciters, a hadith
-          library, and a home-screen prayer widget on both platforms. Works
-          offline. Fully accessible with VoiceOver and TalkBack.
-        </p>
-        <div class="stack">Flutter · Firebase · StoreKit &amp; Play Billing · WidgetKit · Local notifications</div>
-        <div class="stores">
-          <a class="store" href="https://apps.apple.com/app/id6472816228" target="_blank" rel="noopener">App Store</a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.muslimlifeguide" target="_blank" rel="noopener">Google Play</a>
-          <a class="store" href="../">Website</a>
-        </div>
-      </article>
+      <div class="grid">
 
-      <article class="app">
-        <div class="top">
-          <h3>Durar — Summaries<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">درر — ملخصات</span></h3>
-          <span class="pill">10K+</span>
-        </div>
-        <p>
-          Concise summaries of the world's most influential books in Arabic and
-          English, so readers can learn faster and think deeper. Built for
-          Durar&nbsp;Digital&nbsp;LLC.
-        </p>
-        <div class="stack">Flutter · REST API · Bilingual RTL / LTR</div>
-        <div class="stores">
-          <a class="store" href="https://apps.apple.com/app/id6749918679" target="_blank" rel="noopener">App Store</a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=com.durar.books" target="_blank" rel="noopener">Google Play</a>
-        </div>
-      </article>
+        <article class="app">
+          <div class="top">
+            <h3>Muslim Life Guide<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">دليل حياة المسلم</span></h3>
+            <span class="pill">10K+</span>
+          </div>
+          <p>
+            An Arabic-first Islamic companion app: the complete 605-page Mushaf,
+            prayer times with adhan notifications, qibla compass, adhkar with
+            reminders, khatma tracker, Qur'an radio with 100+ reciters, a hadith
+            library, and a home-screen prayer widget on both platforms. Works
+            offline. Fully accessible with VoiceOver and TalkBack.
+          </p>
+          <div class="stack">Flutter · Firebase · StoreKit &amp; Play Billing · WidgetKit · Local notifications</div>
+          <div class="stores">
+            <a class="store" href="https://apps.apple.com/app/id6472816228" target="_blank" rel="noopener">App Store</a>
+            <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.muslimlifeguide" target="_blank" rel="noopener">Google Play</a>
+            <a class="store" href="../">Website</a>
+          </div>
+        </article>
 
-      <article class="app">
-        <div class="top">
-          <h3>Studio HD</h3>
-        </div>
-        <p>
-          A large library of HD wallpapers and video backgrounds with keyword and
-          emoji search, in-app editing and customization, favourites, offline
-          downloads and one-tap sharing.
-        </p>
-        <div class="stack">Flutter · REST API · SQFlite</div>
-        <div class="stores">
-          <a class="store" href="https://apps.apple.com/app/id6473664481" target="_blank" rel="noopener">App Store</a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.wallpapersfreehd" target="_blank" rel="noopener">Google Play</a>
-        </div>
-      </article>
+        <article class="app">
+          <div class="top">
+            <h3>Studio HD</h3>
+          </div>
+          <p>
+            A large library of HD wallpapers and video backgrounds with keyword
+            and emoji search, in-app editing and customization, favourites,
+            offline downloads and one-tap sharing.
+          </p>
+          <div class="stack">Flutter · REST API · SQFlite</div>
+          <div class="stores">
+            <a class="store" href="https://apps.apple.com/app/id6473664481" target="_blank" rel="noopener">App Store</a>
+            <a class="store" href="https://play.google.com/store/apps/details?id=mahdi.app.wallpapersfreehd" target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </article>
 
-      <article class="app">
-        <div class="top">
-          <h3>Note With Us</h3>
-        </div>
-        <p>
-          A social notes app: Google sign-in, notes with ringing reminders,
-          sharing and likes, memories and image stories, in-app chat and simple
-          games, profile and theme customization — in Arabic and English.
-        </p>
-        <div class="stack">Flutter · Firebase Auth · Firestore · Cloud Messaging</div>
-        <div class="stores">
-          <a class="store" href="https://play.google.com/store/apps/details?id=at.mahdi.notewithus" target="_blank" rel="noopener">Google Play</a>
-        </div>
-      </article>
+        <article class="app">
+          <div class="top">
+            <h3>Note With Us</h3>
+          </div>
+          <p>
+            A social notes app: Google sign-in, notes with ringing reminders,
+            sharing and likes, memories and image stories, in-app chat and simple
+            games, profile and theme customization — in Arabic and English.
+          </p>
+          <div class="stack">Flutter · Firebase Auth · Firestore · Cloud Messaging</div>
+          <div class="stores">
+            <a class="store" href="https://play.google.com/store/apps/details?id=at.mahdi.notewithus" target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </article>
 
+      </div>
     </div>
+
+    <!-- ─────────── COMPANY WORK ─────────── -->
+    <div class="group">
+      <div class="sec-head">
+        <h3>Built for companies</h3>
+        <span class="count">5 · CLIENT WORK</span>
+      </div>
+      <p class="sec-note">Shipped as part of a team, published under the company&rsquo;s developer account.</p>
+
+      <div class="rows">
+
+        <div class="row-app">
+          <div>
+            <div class="name">Durar &mdash; Summaries <span class="ar" style="color:var(--muted);font-weight:400">درر</span></div>
+            <div class="for">Durar Digital LLC · 10K+ downloads</div>
+          </div>
+          <div class="desc">Concise summaries of the world&rsquo;s most influential books, in Arabic and English.</div>
+          <div class="stores">
+            <a class="store" href="https://apps.apple.com/app/id6749918679" target="_blank" rel="noopener">App Store</a>
+            <a class="store" href="https://play.google.com/store/apps/details?id=com.durar.books" target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </div>
+
+        <div class="row-app">
+          <div>
+            <div class="name">Sales Plus</div>
+            <div class="for">Disty · دِستي</div>
+          </div>
+          <div class="desc">Field-sales app for online and offline media distribution across Saudi Arabia.</div>
+        </div>
+
+        <!-- ▼▼ املأ الثلاثة الباقية: بدّل الاسم والوصف، وأضف رابط متجرٍ إن كان عامّاً ▼▼ -->
+        <div class="row-app">
+          <div>
+            <div class="name">Real-estate platform</div>
+            <div class="for">Xeleration</div>
+          </div>
+          <div class="desc">Property search and listings with interactive Mapbox mapping, clustering and geolocation.</div>
+        </div>
+
+        <div class="row-app">
+          <div>
+            <div class="name">Enterprise mobile platform</div>
+            <div class="for">iSolutions · ismena</div>
+          </div>
+          <div class="desc">Flutter client with a PHP&nbsp;/&nbsp;Laravel back end and REST APIs, built end to end.</div>
+        </div>
+
+        <div class="row-app">
+          <div>
+            <div class="name">Fazeal</div>
+            <div class="for">Cyper Solutions</div>
+          </div>
+          <div class="desc">Flutter client on a Java&nbsp;/&nbsp;Spring Boot microservice back end with MySQL.</div>
+        </div>
+        <!-- ▲▲ ▲▲ -->
+
+      </div>
+    </div>
+
   </div>
 </section>
 
