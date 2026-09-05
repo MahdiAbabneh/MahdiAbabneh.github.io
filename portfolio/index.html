@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mahdi Ababneh — Senior Flutter Developer</title>
-<meta name="description" content="Senior Flutter Developer in Amman, Jordan. Four years building and shipping production mobile apps on the App Store and Google Play — Flutter, Dart, Spring Boot, Laravel.">
+<meta name="description" content="Senior Flutter Developer in Amman, Jordan. Five years building and shipping production mobile apps on the App Store and Google Play — including Balady for the Saudi Ministry of Municipal and Rural Affairs — Flutter, Dart, Spring Boot, Laravel.">
 <meta name="theme-color" content="#0f1018">
 <link rel="icon" href="../icon.png">
 <link rel="canonical" href="https://mahdiababneh.github.io/portfolio/">
@@ -236,26 +236,16 @@ p.sub{color:var(--muted);font-size:.94rem;margin-bottom:34px;max-width:62ch}
 .sec-note{color:var(--muted);font-size:.87rem;margin:0 0 20px}
 .group + .group{margin-top:46px}
 
-.rows{display:flex;flex-direction:column;gap:10px}
-.row-app{
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  background:var(--card);border:1px solid var(--border);border-radius:var(--r-sm);
-  padding:16px 20px;transition:border-color .18s ease;
+.app .pub{
+  color:var(--purple-light);font-weight:600;font-size:.84rem;margin-top:4px;
 }
-.row-app:hover{border-color:rgba(170,178,210,.34)}
-.row-app .name{font-weight:700;font-size:.97rem;letter-spacing:-.01em}
-.row-app .for{color:var(--purple-light);font-size:.83rem;font-weight:600}
-.row-app .desc{color:var(--muted);font-size:.86rem;flex:1 1 260px;min-width:0}
-.row-app .stores{margin:0}
-
-.row-app.featured{
+.app.featured{
   border-color:rgba(232,200,122,.42);
-  background:linear-gradient(135deg,rgba(232,200,122,.07),var(--card) 62%);
+  background:linear-gradient(150deg,rgba(232,200,122,.08),var(--card) 58%);
 }
-.row-app.featured .name{font-size:1.06rem}
-.row-app .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
-.row-app .badge{
-  font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:999px;
+.app .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.app .badge{
+  font-size:.69rem;font-weight:700;padding:2px 9px;border-radius:999px;
   background:rgba(232,200,122,.14);color:var(--gold);
   border:1px solid rgba(232,200,122,.3);white-space:nowrap;
 }
@@ -340,14 +330,14 @@ footer a:hover{color:var(--purple-light)}
     <p class="lede">
       I build and ship production mobile apps end to end — product decisions,
       Flutter code, native platform work, backend APIs, store release, and the
-      long maintenance that comes after. Four years across five companies in
+      long maintenance that comes after. Five years across five companies in
       Jordan, Saudi Arabia, the UAE and the United States.
     </p>
 
     <div class="stats">
-      <div class="stat"><b>4+</b><span>Years shipping</span></div>
+      <div class="stat"><b>5+</b><span>Years shipping</span></div>
       <div class="stat"><b>9</b><span>Apps on the stores</span></div>
-      <div class="stat"><b>1M+</b><span>Downloads on Balady</span></div>
+      <div class="stat"><b>3</b><span>Self-published</span></div>
       <div class="stat"><b>5</b><span>Companies, 4 countries</span></div>
     </div>
 
@@ -453,6 +443,7 @@ footer a:hover{color:var(--purple-light)}
             <h3>Muslim Life Guide<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">دليل حياة المسلم</span></h3>
             <span class="pill">10K+</span>
           </div>
+          <div class="pub">Self-published · Mahdi Ababneh</div>
           <p>
             An Arabic-first Islamic companion app: the complete 605-page Mushaf,
             prayer times with adhan notifications, qibla compass, adhkar with
@@ -472,6 +463,7 @@ footer a:hover{color:var(--purple-light)}
           <div class="top">
             <h3>Studio HD</h3>
           </div>
+          <div class="pub">Self-published · Mahdi Ababneh</div>
           <p>
             A large library of HD wallpapers and video backgrounds with keyword
             and emoji search, in-app editing and customization, favourites,
@@ -488,6 +480,7 @@ footer a:hover{color:var(--purple-light)}
           <div class="top">
             <h3>Note With Us</h3>
           </div>
+          <div class="pub">Self-published · Mahdi Ababneh</div>
           <p>
             A social notes app: Google sign-in, notes with ringing reminders,
             sharing and likes, memories and image stories, in-app chat and simple
@@ -510,84 +503,91 @@ footer a:hover{color:var(--purple-light)}
       </div>
       <p class="sec-note">Shipped as part of a team and published under the client&rsquo;s developer account.</p>
 
-      <div class="rows">
+      <div class="grid">
 
-        <div class="row-app featured">
-          <div>
-            <div class="name">Balady <span class="ar" style="color:var(--muted);font-weight:400">بلدي</span></div>
-            <div class="for">MOMRA — Saudi Ministry of Municipal &amp; Rural Affairs</div>
-            <div class="badges">
-              <span class="badge">1M+ downloads</span>
-              <span class="badge">4.0★ · 22.6K reviews</span>
-              <span class="badge">Government</span>
-            </div>
+        <article class="app featured">
+          <div class="top">
+            <h3>Balady<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">بلدي</span></h3>
           </div>
-          <div class="desc">Saudi Arabia&rsquo;s national municipal services app — permits, reports and licences — built around a 3D interactive map of the Kingdom.</div>
+          <div class="pub">MOMRA — Saudi Ministry of Municipal &amp; Rural Affairs</div>
+          <div class="badges">
+            <span class="badge">1M+ downloads</span>
+            <span class="badge">4.0★ · 22.6K reviews</span>
+            <span class="badge">Government</span>
+          </div>
+          <p>Saudi Arabia&rsquo;s national municipal services app — permits, reports and licences — built around a 3D interactive map of the Kingdom.</p>
+          <div class="stack">Flutter · 3D mapping · Government-scale traffic</div>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/sa/app/balady-%D8%A8%D9%84%D8%AF%D9%8A/id1522185123" target="_blank" rel="noopener">App Store</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=momra.balady.android" target="_blank" rel="noopener">Google Play</a>
           </div>
-        </div>
+        </article>
 
-        <div class="row-app">
-          <div>
-            <div class="name">Durar &mdash; Summaries <span class="ar" style="color:var(--muted);font-weight:400">درر</span></div>
-            <div class="for">Durar Digital LLC · 10K+ downloads</div>
+        <article class="app">
+          <div class="top">
+            <h3>Durar — Summaries<br><span class="ar" style="font-size:.9rem;color:var(--muted);font-weight:400">درر</span></h3>
+            <span class="pill">10K+</span>
           </div>
-          <div class="desc">Concise summaries of the world&rsquo;s most influential books, in Arabic and English.</div>
+          <div class="pub">Durar Digital LLC</div>
+          <p>Concise summaries of the world&rsquo;s most influential books, in Arabic and English, so readers can learn faster and think deeper.</p>
+          <div class="stack">Flutter · REST API · Bilingual RTL / LTR</div>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/app/id6749918679" target="_blank" rel="noopener">App Store</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.durar.books" target="_blank" rel="noopener">Google Play</a>
           </div>
-        </div>
+        </article>
 
-        <div class="row-app">
-          <div>
-            <div class="name">SalesPlus</div>
-            <div class="for">Disty Company for Marketing</div>
+        <article class="app">
+          <div class="top">
+            <h3>SalesPlus</h3>
           </div>
-          <div class="desc">Salesforce and order-fulfilment platform for businesses across the MENA region.</div>
+          <div class="pub">Disty Company for Marketing</div>
+          <p>Salesforce and order-fulfilment platform for businesses across the MENA region, integrating sales operations and order tracking.</p>
+          <div class="stack">Flutter · Offline-first sync · REST API</div>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/app/id6742792512" target="_blank" rel="noopener">App Store</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.disty.mndobi" target="_blank" rel="noopener">Google Play</a>
           </div>
-        </div>
+        </article>
 
-        <div class="row-app">
-          <div>
-            <div class="name">PSI Real Estate</div>
-            <div class="for">Property Shop Investment LLC</div>
+        <article class="app">
+          <div class="top">
+            <h3>PSI Real Estate</h3>
           </div>
-          <div class="desc">UAE property search for buyers, renters and investors, with interactive Mapbox mapping.</div>
+          <div class="pub">Property Shop Investment LLC, Abu Dhabi</div>
+          <p>UAE property search for buyers, renters and investors, with interactive Mapbox mapping, clustering and geolocation.</p>
+          <div class="stack">Flutter · Mapbox · Geolocation</div>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/app/id6736644035" target="_blank" rel="noopener">App Store</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.psi.psirealestate" target="_blank" rel="noopener">Google Play</a>
           </div>
-        </div>
+        </article>
 
-        <div class="row-app">
-          <div>
-            <div class="name">iSolution Events</div>
-            <div class="for">Invention Solutions IT</div>
+        <article class="app">
+          <div class="top">
+            <h3>iSolution Events</h3>
           </div>
-          <div class="desc">Event companion app — agenda, speakers, bios and gallery — for iSolutions and Google Cloud events.</div>
+          <div class="pub">Invention Solutions IT</div>
+          <p>Event companion app for iSolutions and Google Cloud events — agenda, speakers, bios, photo gallery and live engagement.</p>
+          <div class="stack">Flutter · PHP / Laravel · REST API</div>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/app/id6443995344" target="_blank" rel="noopener">App Store</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.isolutions.events" target="_blank" rel="noopener">Google Play</a>
           </div>
-        </div>
+        </article>
 
-        <div class="row-app">
-          <div>
-            <div class="name">Fazeal Social</div>
-            <div class="for">Fazeal · Cyper Solutions</div>
+        <article class="app">
+          <div class="top">
+            <h3>Fazeal Social</h3>
           </div>
-          <div class="desc">A social network built on a Java / Spring Boot microservice back end with MySQL.</div>
+          <div class="pub">Fazeal · Cyper Solutions</div>
+          <p>A social network offering a personalised social experience, built on a Java / Spring Boot microservice back end.</p>
+          <div class="stack">Flutter · Spring Boot · Microservices · MySQL</div>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/app/id6443977668" target="_blank" rel="noopener">App Store</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.fazeal.mobile.fazeal" target="_blank" rel="noopener">Google Play</a>
           </div>
-        </div>
+        </article>
 
       </div>
     </div>
