@@ -1,0 +1,101 @@
+name: Jordan prayer times
+
+# Publishes prayer-times/jordan/<year>.json for the Muslim Life Guide app, which
+# downloads the year it needs from GitHub Pages.
+#
+# Awqaf puts next year's table up some time late in the year without notice,
+# so look daily while it could appear and weekly the rest of the year.
+on:
+  schedule:
+    - cron: "17 1 * 11,12,1 *" # daily, Nov–Jan (04:17 in Amman)
+    - cron: "17 1 * 2-10 1" # Mondays, Feb–Oct
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "Fetch this year again, even if already published (empty = this year and next, if missing)"
+        required: false
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: jordan-prayer-times
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Fetch missing years
+        env:
+          FORCE_YEAR: ${{ inputs.year }}
+        run: |
+          if [ -n "$FORCE_YEAR" ]; then
+            years="$FORCE_YEAR"
+          else
+            this=$(TZ=Asia/Amman date +%Y)
+            years="$this $((this + 1))"
+          fi
+          for year in $years; do
+            file="prayer-times/jordan/$year.json"
+            if [ -z "$FORCE_YEAR" ] && [ -f "$file" ]; then
+              echo "$year: already published"
+              continue
+            fi
+            set +e
+            node .github/scripts/get-jordan-prayer-times.ts "$year" "$file"
+            code=$?
+            set -e
+            case $code in
+              0) ;;
+              2) echo "::notice::$year is not on awqaf.gov.jo yet" ;;
+              *) exit "$code" ;;
+            esac
+          done
+
+      - name: Commit
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add prayer-times/jordan
+          if ! git diff --cached --quiet; then
+            years=$(git diff --cached --name-only | xargs -n1 basename | sed 's/\.json$//' | tr '\n' ' ')
+            git commit -m "prayer-times: Jordan $years"
+            git push
+            echo "published=$years" >> "$GITHUB_OUTPUT"
+          elif [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -gt $(( 45 * 86400 )) ]; then
+            # GitHub switches off scheduled workflows in a public repository
+            # after 60 days without activity — which would silently skip next
+            # year. An empty commit counts as activity.
+            git commit --allow-empty -m "prayer-times: keep the schedule alive"
+            git push
+          fi
+
+      - name: Confirm the files are live
+        if: steps.commit.outputs.published != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # A push made with GITHUB_TOKEN may not start a Pages build on its own.
+          gh api --method POST "repos/${{ github.repository }}/pages/builds" || true
+          for year in ${{ steps.commit.outputs.published }}; do
+            url="https://mahdiababneh.github.io/prayer-times/jordan/$year.json"
+            for attempt in $(seq 1 40); do
+              if curl -fsS "$url?check=$GITHUB_RUN_ID-$attempt" -o live.json \
+                && cmp -s live.json "prayer-times/jordan/$year.json"; then
+                echo "$year is live at $url"
+                continue 2
+              fi
+              sleep 15
+            done
+            echo "::error::$year was committed but is not live at $url after 10 minutes"
+            exit 1
+          done
