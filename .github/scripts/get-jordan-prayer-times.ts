@@ -3,8 +3,9 @@
  *
  *   node .github/scripts/get-jordan-prayer-times.ts 2027 [out.json]
  *
- * Writes prayer-times/jordan/<year>.json in the exact shape of
- * assets/jordan_prayers_times.json in the Muslim Life Guide app:
+ * Writes prayer-times/jordan/<year>.json in the shape of
+ * assets/jordan_prayers_times.json in the Muslim Life Guide app (the eight
+ * main regions, plus the smaller ones in EXTRA_REGIONS):
  *
  *   { "amman": { "2027-01-01": { "fajr": "06:09", ..., "isha": "07:10" } } }
  *
@@ -34,6 +35,25 @@ const CITIES: ReadonlyArray<readonly [key: string, arabic: string]> = [
   ["aqaba", "العقبة"],
   ["jerashAndAjloun", "جرش وعجلون"],
   ["mafraq", "المفرق"],
+];
+
+// The smaller regions Awqaf lists after the main eight. Their times differ
+// from their governorate's main city by minutes (the Jordan Valley is below
+// sea level; Ruwaished and Azraq are far east), so each gets its own table.
+//
+// Optional, unlike CITIES: if one of them fails, or disappears from the site,
+// the year is still written without it — the app falls back to the region's
+// parent table. A missing main city still fails the whole run, because old
+// app versions know only those eight.
+const EXTRA_REGIONS: ReadonlyArray<readonly [key: string, arabic: string]> = [
+  ["northernGhor", "الأغوار الشمالية"],
+  ["middleGhor", "الأغوار الوسطى"],
+  ["dhiban", "ذيبان"],
+  ["azraq", "الأزرق"],
+  ["shobakPetra", "الشوبك والبتراء"],
+  ["dhleilHashemiyya", "الظليل والهاشمية"],
+  ["ruwaished", "الرويشد"],
+  ["jerusalem", "القدس"],
 ];
 
 const PRAYERS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"] as const;
@@ -269,6 +289,17 @@ async function main() {
     }
     result[key] = validate(key, year, days);
     console.log(`${key}: ${days.size} days in ${Math.round((Date.now() - started) / 1000)}s`);
+  }
+
+  for (const [key, arabic] of EXTRA_REGIONS) {
+    const started = Date.now();
+    try {
+      result[key] = validate(key, year, await fetchCity(year, arabic));
+      console.log(`${key}: done in ${Math.round((Date.now() - started) / 1000)}s`);
+    } catch (error) {
+      // Annotated so the run page shows it, but the year is still published.
+      console.log(`::warning::${key} skipped — ${error instanceof Error ? error.message : error}`);
+    }
   }
 
   await mkdir(dirname(outPath), { recursive: true });
